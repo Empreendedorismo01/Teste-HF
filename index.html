@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HF • Arte e Biju</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#111;
+color:white;
+}
+
+header{
+background:linear-gradient(90deg,#ff69b4,#c77dff,#9d4edd);
+padding:20px;
+text-align:center;
+}
+
+header h1{
+margin:0;
+font-size:28px;
+}
+
+header p{
+margin:5px;
+}
+
+.container{
+padding:20px;
+max-width:1100px;
+margin:auto;
+}
+
+.produtos{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.produto{
+background:#1c1c1c;
+border-radius:10px;
+padding:15px;
+text-align:center;
+transition:0.3s;
+}
+
+.produto:hover{
+transform:scale(1.05);
+}
+
+.produto img{
+width:100%;
+border-radius:10px;
+}
+
+.preco{
+color:#ff8bd8;
+font-size:18px;
+margin:10px;
+}
+
+button{
+background:#c77dff;
+border:none;
+padding:10px 15px;
+border-radius:8px;
+color:white;
+cursor:pointer;
+font-size:15px;
+}
+
+button:hover{
+background:#ff69b4;
+}
+
+.carrinho{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#9d4edd;
+padding:15px;
+border-radius:10px;
+}
+
+footer{
+margin-top:40px;
+background:#000;
+text-align:center;
+padding:15px;
+color:#aaa;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>HF • ARTE E BIJU</h1>
+<p>💜 Acessórios personalizados feitos à mão</p>
+<p>📍 Januária - MG</p>
+
+</header>
+
+<div class="container">
+
+<h2>Nossos Produtos</h2>
+
+<div class="produtos">
+
+<!-- PRODUTO 1 -->
+<div class="produto">
+
+<img src="https://i.imgur.com/0y0y0y0.jpg">
+
+<h3>Pulseira Rosa</h3>
+
+<p class="preco">R$15,00</p>
+
+<button onclick="addCarrinho('Pulseira Rosa')">Adicionar</button>
+
+</div>
+
+
+<!-- PRODUTO 2 -->
+
+<div class="produto">
+
+<img src="https://i.imgur.com/0y0y0y0.jpg">
+
+<h3>Colar Lilás</h3>
+
+<p class="preco">R$20,00</p>
+
+<button onclick="addCarrinho('Colar Lilás')">Adicionar</button>
+
+</div>
+
+
+<!-- PRODUTO 3 -->
+
+<div class="produto">
+
+<img src="https://i.imgur.com/0y0y0y0.jpg">
+
+<h3>Chaveiro Coração</h3>
+
+<p class="preco">R$10,00</p>
+
+<button onclick="addCarrinho('Chaveiro Coração')">Adicionar</button>
+
+</div>
+
+
+</div>
+
+</div>
+
+<div class="carrinho">
+
+🛒 <span id="total">0</span> itens
+
+<br><br>
+
+<button onclick="finalizar()">Finalizar no WhatsApp</button>
+
+</div>
+
+<footer>
+
+<p>HF • Arte e Biju © 2026</p>
+<p>Instagram: @hf_arteebijus</p>
+
+</footer>
+
+
+<script>
+
+let carrinho = []
+
+function addCarrinho(produto){
+
+carrinho.push(produto)
+
+document.getElementById("total").innerText = carrinho.length
+
+}
+
+function finalizar(){
+
+let mensagem = "Olá! Quero comprar:%0A"
+
+carrinho.forEach(p => {
+
+mensagem += "- " + p + "%0A"
+
+})
+
+window.open("https://wa.me/5538991580022?text="+mensagem)
+
+}
+
+</script>
+
+</body>
+  </html>
