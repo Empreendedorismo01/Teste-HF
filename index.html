@@ -11,14 +11,16 @@
 body{
 margin:0;
 font-family:Arial;
-background:#111;
-color:white;
+background:#fff0f6;
 }
 
+/* HEADER */
+
 header{
-background:linear-gradient(90deg,#ff69b4,#c77dff,#9d4edd);
-padding:20px;
+background:#ff4da6;
+color:white;
 text-align:center;
+padding:25px;
 }
 
 header h1{
@@ -26,14 +28,37 @@ margin:0;
 font-size:28px;
 }
 
-header p{
-margin:5px;
+/* MENU */
+
+.menu{
+display:flex;
+justify-content:center;
+gap:15px;
+background:#ffc0dd;
+padding:10px;
+flex-wrap:wrap;
 }
 
+.menu button{
+background:white;
+border:none;
+padding:10px 20px;
+border-radius:20px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.menu button:hover{
+background:#ff4da6;
+color:white;
+}
+
+/* CONTEUDO */
+
 .container{
-padding:20px;
 max-width:1100px;
 margin:auto;
+padding:20px;
 }
 
 .produtos{
@@ -42,58 +67,61 @@ grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:20px;
 }
 
-.produto{
-background:#1c1c1c;
-border-radius:10px;
+/* CARD */
+
+.card{
+background:white;
+border-radius:12px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
 padding:15px;
 text-align:center;
 transition:0.3s;
 }
 
-.produto:hover{
+.card:hover{
 transform:scale(1.05);
 }
 
-.produto img{
+.card img{
 width:100%;
 border-radius:10px;
 }
 
 .preco{
-color:#ff8bd8;
+color:#ff1493;
 font-size:18px;
 margin:10px;
 }
 
-button{
-background:#c77dff;
+/* BOTAO */
+
+.botao{
+background:#ff4da6;
+color:white;
 border:none;
 padding:10px 15px;
 border-radius:8px;
-color:white;
 cursor:pointer;
-font-size:15px;
 }
 
-button:hover{
-background:#ff69b4;
-}
+/* CARRINHO */
 
 .carrinho{
 position:fixed;
 bottom:20px;
 right:20px;
-background:#9d4edd;
+background:#ff4da6;
+color:white;
 padding:15px;
 border-radius:10px;
 }
 
 footer{
-margin-top:40px;
-background:#000;
+background:#ff4da6;
+color:white;
 text-align:center;
 padding:15px;
-color:#aaa;
+margin-top:40px;
 }
 
 </style>
@@ -104,106 +132,139 @@ color:#aaa;
 <header>
 
 <h1>HF • ARTE E BIJU</h1>
-<p>💜 Acessórios personalizados feitos à mão</p>
+<p>Acessórios personalizados feitos à mão</p>
 <p>📍 Januária - MG</p>
 
 </header>
 
+<div class="menu">
+
+<button onclick="mostrar('pulseiras')">Pulseiras</button>
+<button onclick="mostrar('colares')">Colares</button>
+<button onclick="mostrar('quadros')">Quadros</button>
+<button onclick="mostrar('cordinhas')">Cordinhas de Celular</button>
+
+</div>
+
 <div class="container">
 
-<h2>Nossos Produtos</h2>
+<!-- PULSEIRAS -->
 
-<div class="produtos">
+<div id="pulseiras" class="produtos">
 
-<!-- PRODUTO 1 -->
-<div class="produto">
-
-<img src="https://i.imgur.com/0y0y0y0.jpg">
-
+<div class="card">
+<img src="https://i.imgur.com/Z6X9Y.jpg">
 <h3>Pulseira Rosa</h3>
-
 <p class="preco">R$15,00</p>
+<button class="botao" onclick="add('Pulseira Rosa')">Adicionar</button>
+</div>
 
-<button onclick="addCarrinho('Pulseira Rosa')">Adicionar</button>
+<div class="card">
+<img src="https://i.imgur.com/Z6X9Y.jpg">
+<h3>Pulseira Lilás</h3>
+<p class="preco">R$12,00</p>
+<button class="botao" onclick="add('Pulseira Lilás')">Adicionar</button>
+</div>
 
 </div>
 
 
-<!-- PRODUTO 2 -->
+<!-- COLARES -->
 
-<div class="produto">
+<div id="colares" class="produtos" style="display:none">
 
-<img src="https://i.imgur.com/0y0y0y0.jpg">
-
-<h3>Colar Lilás</h3>
-
+<div class="card">
+<img src="https://i.imgur.com/Z6X9Y.jpg">
+<h3>Colar Delicado</h3>
 <p class="preco">R$20,00</p>
-
-<button onclick="addCarrinho('Colar Lilás')">Adicionar</button>
-
-</div>
-
-
-<!-- PRODUTO 3 -->
-
-<div class="produto">
-
-<img src="https://i.imgur.com/0y0y0y0.jpg">
-
-<h3>Chaveiro Coração</h3>
-
-<p class="preco">R$10,00</p>
-
-<button onclick="addCarrinho('Chaveiro Coração')">Adicionar</button>
-
-</div>
-
-
+<button class="botao" onclick="add('Colar Delicado')">Adicionar</button>
 </div>
 
 </div>
+
+
+<!-- QUADROS -->
+
+<div id="quadros" class="produtos" style="display:none">
+
+<div class="card">
+<img src="https://i.imgur.com/Z6X9Y.jpg">
+<h3>Quadro Personalizado</h3>
+<p class="preco">R$35,00</p>
+<button class="botao" onclick="add('Quadro Personalizado')">Adicionar</button>
+</div>
+
+</div>
+
+
+<!-- CORDINHAS -->
+
+<div id="cordinhas" class="produtos" style="display:none">
+
+<div class="card">
+<img src="https://i.imgur.com/Z6X9Y.jpg">
+<h3>Cordinha de Celular</h3>
+<p class="preco">R$18,00</p>
+<button class="botao" onclick="add('Cordinha de Celular')">Adicionar</button>
+</div>
+
+</div>
+
+</div>
+
 
 <div class="carrinho">
 
-🛒 <span id="total">0</span> itens
+🛒 <span id="itens">0</span> itens
 
 <br><br>
 
-<button onclick="finalizar()">Finalizar no WhatsApp</button>
+<button class="botao" onclick="comprar()">Finalizar</button>
 
 </div>
 
+
 <footer>
 
-<p>HF • Arte e Biju © 2026</p>
-<p>Instagram: @hf_arteebijus</p>
+Instagram: @hf_arteebijus
 
 </footer>
 
 
 <script>
 
-let carrinho = []
+let carrinho=[]
 
-function addCarrinho(produto){
+function add(produto){
 
 carrinho.push(produto)
 
-document.getElementById("total").innerText = carrinho.length
+document.getElementById("itens").innerText=carrinho.length
 
 }
 
-function finalizar(){
+function comprar(){
 
-let mensagem = "Olá! Quero comprar:%0A"
+let msg="Olá! Quero comprar:%0A"
 
-carrinho.forEach(p => {
+carrinho.forEach(p=>{
 
-mensagem += "- " + p + "%0A"
+msg+="- "+p+"%0A"
 
 })
 
-window.open("https://wa.me/5538991580022?text="+mensagem)
+window.open("https://wa.me/5538991580022?text="+msg)
+
+}
+
+function mostrar(categoria){
+
+document.getElementById("pulseiras").style.display="none"
+document.getElementById("colares").style.display="none"
+document.getElementById("quadros").style.display="none"
+document.getElementById("cordinhas").style.display="none"
+
+document.getElementById(categoria).style.display="grid"
 
 }
 
