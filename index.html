@@ -11,10 +11,8 @@
 body{
 margin:0;
 font-family:Arial;
-background:#fff0f6;
+background:#ffe6f2;
 }
-
-/* HEADER */
 
 header{
 background:#ff4da6;
@@ -25,23 +23,21 @@ padding:25px;
 
 header h1{
 margin:0;
-font-size:28px;
+font-size:30px;
 }
-
-/* MENU */
 
 .menu{
 display:flex;
 justify-content:center;
-gap:15px;
-background:#ffc0dd;
-padding:10px;
 flex-wrap:wrap;
+gap:10px;
+background:#ffcce6;
+padding:10px;
 }
 
 .menu button{
-background:white;
 border:none;
+background:white;
 padding:10px 20px;
 border-radius:20px;
 cursor:pointer;
@@ -53,8 +49,6 @@ background:#ff4da6;
 color:white;
 }
 
-/* CONTEUDO */
-
 .container{
 max-width:1100px;
 margin:auto;
@@ -63,11 +57,9 @@ padding:20px;
 
 .produtos{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
 gap:20px;
 }
-
-/* CARD */
 
 .card{
 background:white;
@@ -93,18 +85,14 @@ font-size:18px;
 margin:10px;
 }
 
-/* BOTAO */
-
 .botao{
 background:#ff4da6;
-color:white;
 border:none;
 padding:10px 15px;
 border-radius:8px;
+color:white;
 cursor:pointer;
 }
-
-/* CARRINHO */
 
 .carrinho{
 position:fixed;
@@ -114,6 +102,12 @@ background:#ff4da6;
 color:white;
 padding:15px;
 border-radius:10px;
+}
+
+.info{
+text-align:center;
+margin-top:40px;
+font-size:18px;
 }
 
 footer{
@@ -148,22 +142,20 @@ margin-top:40px;
 
 <div class="container">
 
-<!-- PULSEIRAS -->
+<!-- CORDINHAS -->
 
-<div id="pulseiras" class="produtos">
+<div id="cordinhas" class="produtos">
 
 <div class="card">
-<img src="https://i.imgur.com/Z6X9Y.jpg">
-<h3>Pulseira Rosa</h3>
-<p class="preco">R$15,00</p>
-<button class="botao" onclick="add('Pulseira Rosa')">Adicionar</button>
+<img src="cordinha1.jpg">
+<h3>Cordinha Lilás</h3>
+<button class="botao" onclick="add('Cordinha Lilás')">Adicionar</button>
 </div>
 
 <div class="card">
-<img src="https://i.imgur.com/Z6X9Y.jpg">
-<h3>Pulseira Lilás</h3>
-<p class="preco">R$12,00</p>
-<button class="botao" onclick="add('Pulseira Lilás')">Adicionar</button>
+<img src="cordinha2.jpg">
+<h3>Cordinha Rosa</h3>
+<button class="botao" onclick="add('Cordinha Rosa')">Adicionar</button>
 </div>
 
 </div>
@@ -174,10 +166,30 @@ margin-top:40px;
 <div id="colares" class="produtos" style="display:none">
 
 <div class="card">
-<img src="https://i.imgur.com/Z6X9Y.jpg">
-<h3>Colar Delicado</h3>
-<p class="preco">R$20,00</p>
-<button class="botao" onclick="add('Colar Delicado')">Adicionar</button>
+<img src="colar1.jpg">
+<h3>Colar Vermelho</h3>
+<p class="preco">R$10,00</p>
+<button class="botao" onclick="add('Colar Vermelho')">Adicionar</button>
+</div>
+
+</div>
+
+
+<!-- PULSEIRAS -->
+
+<div id="pulseiras" class="produtos" style="display:none">
+
+<div class="card">
+<img src="pulseira1.jpg">
+<h3>Pulseira Vermelha</h3>
+<p class="preco">R$5,00</p>
+<button class="botao" onclick="add('Pulseira Vermelha')">Adicionar</button>
+</div>
+
+<div class="card">
+<img src="pulseira2.jpg">
+<h3>Pulseiras Coloridas</h3>
+<button class="botao" onclick="add('Pulseiras Coloridas')">Adicionar</button>
 </div>
 
 </div>
@@ -188,41 +200,34 @@ margin-top:40px;
 <div id="quadros" class="produtos" style="display:none">
 
 <div class="card">
-<img src="https://i.imgur.com/Z6X9Y.jpg">
-<h3>Quadro Personalizado</h3>
-<p class="preco">R$35,00</p>
-<button class="botao" onclick="add('Quadro Personalizado')">Adicionar</button>
-</div>
-
-</div>
-
-
-<!-- CORDINHAS -->
-
-<div id="cordinhas" class="produtos" style="display:none">
-
-<div class="card">
-<img src="https://i.imgur.com/Z6X9Y.jpg">
-<h3>Cordinha de Celular</h3>
-<p class="preco">R$18,00</p>
-<button class="botao" onclick="add('Cordinha de Celular')">Adicionar</button>
+<img src="quadro1.jpg">
+<h3>Quadro Decorativo</h3>
+<button class="botao" onclick="add('Quadro Decorativo')">Adicionar</button>
 </div>
 
 </div>
 
 </div>
 
+<div class="info">
+
+<p><b>✨ Mais variedades no nosso WhatsApp e no Instagram</b></p>
+
+<a href="https://wa.me/5538991580022">
+<button class="botao">Falar no WhatsApp</button>
+</a>
+
+</div>
 
 <div class="carrinho">
 
-🛒 <span id="itens">0</span> itens
+🛒 <span id="itens">0</span>
 
 <br><br>
 
 <button class="botao" onclick="comprar()">Finalizar</button>
 
 </div>
-
 
 <footer>
 
