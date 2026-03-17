@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE html><html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HF ° BIJUS</title>
-
-  <style>
+  <title>HF ° BIJUS</title>  <style>
     body {
       margin: 0;
-      font-family: Arial;
+      font-family: Arial, sans-serif;
       background: #ffe4ec;
     }
 
@@ -20,6 +17,8 @@
       justify-content: space-between;
       align-items: center;
     }
+
+    header h1 { margin: 0; }
 
     .cart-btn {
       background: white;
@@ -59,6 +58,7 @@
     .price {
       font-size: 18px;
       font-weight: bold;
+      color: #333;
     }
 
     .btn {
@@ -81,115 +81,99 @@
       box-shadow: -2px 0 10px rgba(0,0,0,0.2);
       padding: 15px;
       transition: 0.3s;
+      overflow-y: auto;
     }
 
-    .cart.active {
-      right: 0;
+    .cart.active { right: 0; }
+
+    .cart h2 { color: #ff4d88; }
+
+    .cart-item {
+      margin: 10px 0;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 5px;
     }
 
     .checkout {
-      margin-top: 10px;
+      margin-top: 15px;
       background: #25D366;
       color: white;
       width: 100%;
       padding: 10px;
       border: none;
       border-radius: 10px;
+      cursor: pointer;
     }
-  </style>
-</head>
-
-<body>
-
-<header>
+  </style></head>
+<body><header>
   <h1>HF ° BIJUS</h1>
-  <div class="cart-btn" onclick="toggleCart()">🛒 (<span id="count">0</span>)</div>
-</header>
-
-<div class="container">
-
-  <div class="card">
+  <div class="cart-btn" onclick="toggleCart()">🛒 Carrinho (<span id="cart-count">0</span>)</div>
+</header><div class="container">  <div class="card">
     <img src="img1.png">
     <h3>Pulseira Macramê</h3>
     <p class="price">R$25,00</p>
-    <button class="btn" onclick="add('Pulseira',25)">Adicionar</button>
-  </div>
-
-  <div class="card">
+    <button class="btn" onclick="addToCart('Pulseira Macramê', 25)">Adicionar</button>
+  </div>  <div class="card">
     <img src="img2.png">
     <h3>Conjunto Vermelho</h3>
-    <p class="price">R$10,00</p>
-    <button class="btn" onclick="add('Conjunto',10)">Adicionar</button>
-  </div>
-
-  <div class="card">
+    <p class="price">R$10,00 / R$5,00</p>
+    <button class="btn" onclick="addToCart('Conjunto Vermelho', 10)">Adicionar</button>
+  </div>  <div class="card">
     <img src="img3.png">
     <h3>Colar Rosa</h3>
     <p class="price">R$15,00</p>
-    <button class="btn" onclick="add('Colar',15)">Adicionar</button>
-  </div>
-
-  <div class="card">
+    <button class="btn" onclick="addToCart('Colar Rosa', 15)">Adicionar</button>
+  </div>  <div class="card">
     <img src="img4.png">
-    <h3>Cordinha Rosa</h3>
+    <h3>Cordinha Celular Rosa</h3>
     <p class="price">R$10,00</p>
-    <button class="btn" onclick="add('Cordinha Rosa',10)">Adicionar</button>
-  </div>
-
-  <div class="card">
+    <button class="btn" onclick="addToCart('Cordinha Rosa', 10)">Adicionar</button>
+  </div>  <div class="card">
     <img src="img5.png">
-    <h3>Cordinha Lilás</h3>
+    <h3>Cordinha Celular Lilás</h3>
     <p class="price">R$10,00</p>
-    <button class="btn" onclick="add('Cordinha Lilás',10)">Adicionar</button>
-  </div>
-
-</div>
-
-<div class="cart" id="cart">
-  <h2>Carrinho</h2>
-  <div id="items"></div>
-  <p>Total: R$ <span id="total">0</span></p>
-  <button class="checkout" onclick="buy()">Finalizar no WhatsApp</button>
-</div>
-
-<script>
+    <button class="btn" onclick="addToCart('Cordinha Lilás', 10)">Adicionar</button>
+  </div></div><div class="cart" id="cart">
+  <h2>Seu Carrinho</h2>
+  <div id="cart-items"></div>
+  <p><strong>Total: R$<span id="total">0</span></strong></p>
+  <button class="checkout" onclick="checkout()">Finalizar no WhatsApp</button>
+</div><script>
 let cart = [];
 
-function toggleCart(){
+function toggleCart() {
   document.getElementById('cart').classList.toggle('active');
 }
 
-function add(name, price){
+function addToCart(name, price) {
   cart.push({name, price});
-  update();
+  updateCart();
 }
 
-function update(){
-  let html = '';
+function updateCart() {
+  let itemsDiv = document.getElementById('cart-items');
   let total = 0;
+  itemsDiv.innerHTML = '';
 
-  cart.forEach(i => {
-    html += `<p>${i.name} - R$${i.price}</p>`;
-    total += i.price;
+  cart.forEach(item => {
+    total += item.price;
+    itemsDiv.innerHTML += `<div class="cart-item">${item.name} - R$${item.price}</div>`;
   });
 
-  document.getElementById('items').innerHTML = html;
   document.getElementById('total').innerText = total;
-  document.getElementById('count').innerText = cart.length;
+  document.getElementById('cart-count').innerText = cart.length;
 }
 
-function buy(){
-  let msg = 'Pedido:%0A';
-
-  cart.forEach(i=>{
-    msg += `${i.name} - R$${i.price}%0A`;
+function checkout() {
+  let message = 'Pedido:%0A';
+  cart.forEach(item => {
+    message += `${item.name} - R$${item.price}%0A`;
   });
 
-  msg += `%0ATotal: R$${document.getElementById('total').innerText}`;
+  let total = document.getElementById('total').innerText;
+  message += `%0ATotal: R$${total}`;
 
-  window.open(`https://wa.me/553891580022?text=${msg}`);
+  window.open(`https://wa.me/553891580022?text=${message}`);
 }
-</script>
-
-</body>
-    </html>
+</script></body>
+  </html>
