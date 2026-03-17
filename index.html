@@ -1,279 +1,112 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE html><html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>HF • Arte e Biju</title>
-
-<style>
-
-body{
-margin:0;
-font-family:Arial;
-background:#ffe6f2;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HF ° BIJUS</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #ffe4ec;
+    }header {
+  background: #ff4d88;
+  color: white;
+  padding: 20px;
+  text-align: center;
 }
 
-header{
-background:#ff4da6;
-color:white;
-text-align:center;
-padding:25px;
+header h1 {
+  margin: 0;
+  font-size: 32px;
 }
 
-header h1{
-margin:0;
-font-size:30px;
+.container {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
 }
 
-.menu{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:10px;
-background:#ffcce6;
-padding:10px;
+.card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: 0.3s;
 }
 
-.menu button{
-border:none;
-background:white;
-padding:10px 20px;
-border-radius:20px;
-cursor:pointer;
-font-weight:bold;
+.card:hover {
+  transform: scale(1.05);
 }
 
-.menu button:hover{
-background:#ff4da6;
-color:white;
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
-.container{
-max-width:1100px;
-margin:auto;
-padding:20px;
+.card-content {
+  padding: 15px;
+  text-align: center;
 }
 
-.produtos{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-gap:20px;
+.card-content h3 {
+  margin: 10px 0;
+  color: #ff4d88;
 }
 
-.card{
-background:white;
-border-radius:12px;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
-padding:15px;
-text-align:center;
-transition:0.3s;
+.card-content p {
+  color: #555;
 }
 
-.card:hover{
-transform:scale(1.05);
+.btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background: #ff80aa;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
-.card img{
-width:100%;
-border-radius:10px;
+.btn:hover {
+  background: #ff4d88;
 }
 
-.preco{
-color:#ff1493;
-font-size:18px;
-margin:10px;
+footer {
+  background: #ff4d88;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 20px;
 }
 
-.botao{
-background:#ff4da6;
-border:none;
-padding:10px 15px;
-border-radius:8px;
-color:white;
-cursor:pointer;
-}
-
-.carrinho{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#ff4da6;
-color:white;
-padding:15px;
-border-radius:10px;
-}
-
-.info{
-text-align:center;
-margin-top:40px;
-font-size:18px;
-}
-
-footer{
-background:#ff4da6;
-color:white;
-text-align:center;
-padding:15px;
-margin-top:40px;
-}
-
-</style>
+  </style>
 </head>
-
-<body>
-
-<header>
-
-<h1>HF • ARTE E BIJU</h1>
-<p>Acessórios personalizados feitos à mão</p>
-<p>📍 Januária - MG</p>
-
-</header>
-
-<div class="menu">
-
-<button onclick="mostrar('pulseiras')">Pulseiras</button>
-<button onclick="mostrar('colares')">Colares</button>
-<button onclick="mostrar('quadros')">Quadros</button>
-<button onclick="mostrar('cordinhas')">Cordinhas de Celular</button>
-
-</div>
-
-<div class="container">
-
-<!-- CORDINHAS -->
-
-<div id="cordinhas" class="produtos">
-
-<div class="card">
-<img src="cordinha1.jpg">
-<h3>Cordinha Lilás</h3>
-<button class="botao" onclick="add('Cordinha Lilás')">Adicionar</button>
+<body>  <header>
+    <h1>HF ° BIJUS</h1>
+    <p>Bijuterias lindas para você brilhar ✨</p>
+  </header>  <section class="container"><div class="card">
+  <img src="https://via.placeholder.com/300x200" alt="Colar">
+  <div class="card-content">
+    <h3>Colar Delicado</h3>
+    <p>Perfeito para o dia a dia</p>
+    <a href="#" class="btn">Comprar</a>
+  </div>
 </div>
 
 <div class="card">
-<img src="cordinha2.jpg">
-<h3>Cordinha Rosa</h3>
-<button class="botao" onclick="add('Cordinha Rosa')">Adicionar</button>
-</div>
-
-</div>
-
-
-<!-- COLARES -->
-
-<div id="colares" class="produtos" style="display:none">
-
-<div class="card">
-<img src="colar1.jpg">
-<h3>Colar Vermelho</h3>
-<p class="preco">R$10,00</p>
-<button class="botao" onclick="add('Colar Vermelho')">Adicionar</button>
-</div>
-
-</div>
-
-
-<!-- PULSEIRAS -->
-
-<div id="pulseiras" class="produtos" style="display:none">
-
-<div class="card">
-<img src="pulseira1.jpg">
-<h3>Pulseira Vermelha</h3>
-<p class="preco">R$5,00</p>
-<button class="botao" onclick="add('Pulseira Vermelha')">Adicionar</button>
+  <img src="https://via.placeholder.com/300x200" alt="Pulseira">
+  <div class="card-content">
+    <h3>Pulseira Charmosa</h3>
+    <p>Elegância em cada detalhe</p>
+    <a href="#" class="btn">Comprar</a>
+  </div>
 </div>
 
 <div class="card">
-<img src="pulseira2.jpg">
-<h3>Pulseiras Coloridas</h3>
-<button class="botao" onclick="add('Pulseiras Coloridas')">Adicionar</button>
-</div>
-
-</div>
-
-
-<!-- QUADROS -->
-
-<div id="quadros" class="produtos" style="display:none">
-
-<div class="card">
-<img src="quadro1.jpg">
-<h3>Quadro Decorativo</h3>
-<button class="botao" onclick="add('Quadro Decorativo')">Adicionar</button>
-</div>
-
-</div>
-
-</div>
-
-<div class="info">
-
-<p><b>✨ Mais variedades no nosso WhatsApp e no Instagram</b></p>
-
-<a href="https://wa.me/5538991580022">
-<button class="botao">Falar no WhatsApp</button>
-</a>
-
-</div>
-
-<div class="carrinho">
-
-🛒 <span id="itens">0</span>
-
-<br><br>
-
-<button class="botao" onclick="comprar()">Finalizar</button>
-
-</div>
-
-<footer>
-
-Instagram: @hf_arteebijus
-
-</footer>
-
-
-<script>
-
-let carrinho=[]
-
-function add(produto){
-
-carrinho.push(produto)
-
-document.getElementById("itens").innerText=carrinho.length
-
-}
-
-function comprar(){
-
-let msg="Olá! Quero comprar:%0A"
-
-carrinho.forEach(p=>{
-
-msg+="- "+p+"%0A"
-
-})
-
-window.open("https://wa.me/5538991580022?text="+msg)
-
-}
-
-function mostrar(categoria){
-
-document.getElementById("pulseiras").style.display="none"
-document.getElementById("colares").style.display="none"
-document.getElementById("quadros").style.display="none"
-document.getElementById("cordinhas").style.display="none"
-
-document.getElementById(categoria).style.display="grid"
-
-}
-
-</script>
-
-</body>
-  </html>
+  <img src="https://via.placeholder.com/300x200" alt="Cordão de celular">
+  <div class="card-content">
+    <h3>Cordinha de Celular</h3>
+    <p>Estilo
